@@ -97,6 +97,8 @@ public void test1() throws  Exception
                 Thread.sleep(5000);
                 driver.findElement(By.xpath("//*[@id='viewShoppingBag']")).click();
                 Thread.sleep(5000);
+                driver.quit();
+
 }
 
 @Test
