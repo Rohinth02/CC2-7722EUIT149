@@ -45,10 +45,11 @@ public class AppTest
         Thread.sleep(5000);
         driver.findElement(By.xpath("/html/body/div[2]/header/nav/div/div[3]/form/div/div[1]/div/a[2]")).click();
         Thread.sleep(5000);
+
         File file = new File("D:\\dbankdemo.xlsx");
         FileInputStream fis = new FileInputStream(file);
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-        XSSFSheet sh = wb.getSheet("Sheet1");
+        XSSFSheet sh = wb.getSheet("login");
         XSSFRow r = sh.getRow(2);
         String x = r.getCell(0).getStringCellValue();
         driver.findElement(By.xpath("/html/body/div[2]/header/nav/div/div[3]/form/div/div[2]/div/input[1]"))
@@ -60,15 +61,23 @@ public class AppTest
                 .findElement(By.xpath("//*[@id='searchGrid']/div/section[1]/section[1]/div/div[1]/div[1]/h1/span"));
         String source = page.getText();
         if (source.equals("Chetan Bhagat"))
+        {
+
             System.out.print("Name found");
+        }
         else
+        {
             System.out.print("Name not found");
+
+        }
+
+            
             driver.quit();
 
     }
 
 @Test
-public void test1() throws InterruptedException
+public void test1() throws  Exception
 {
     WebDriverManager.chromedriver().setup();
         WebDriver driver=new ChromeDriver();
@@ -82,15 +91,16 @@ public void test1() throws InterruptedException
                 .perform();
                 driver.findElement(By.linkText("Audiobooks Top 100")).click();
                 Thread.sleep(5000);
-                
-                driver.findElement(By.xpath("//*[@id='addToBagForm_2940159543998']/input[11]")).click();
-                driver.switchTo().alert().accept();
-                driver.quit();
-
+                driver.findElement(By.xpath("//*[@id='product-shelf-2940159516459']/div/div[2]/div[1]/h3/a")).click();
+                Thread.sleep(5000);
+                driver.findElement(By.xpath("//*[@id='prodInfoContainer']/div[3]/form[1]/input[10]")).click();
+                Thread.sleep(5000);
+                driver.findElement(By.xpath("//*[@id='viewShoppingBag']")).click();
+                Thread.sleep(5000);
 }
 
 @Test
-public void test2() throws InterruptedException
+public void test2() throws Exception
 {
     WebDriverManager.chromedriver().setup();
         WebDriver driver=new ChromeDriver();
